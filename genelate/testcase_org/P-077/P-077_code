@@ -1,0 +1,8 @@
+df_receipt.group_by('customer_id').agg(
+    pl.col('amount').sum()
+).with_columns(
+    pl.col('amount').log().alias('log_amount')
+).filter(
+    (pl.col('log_amount') - pl.col('log_amount').mean()).abs() > 
+    pl.col('log_amount').std() * 3
+).head(10)

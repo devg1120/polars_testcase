@@ -1,0 +1,6 @@
+\begin{aligned}
+& \mbox{緯度（ラジアン）}：\phi \\
+& \mbox{経度（ラジアン）}：\lambda \\
+& \mbox{距離}L = 6371 * \arccos(\sin \phi_1 * \sin \phi_2 + \\
+&  \cos \phi_1 * \cos \phi_2 * \cos(\lambda_1 − \lambda_2))
+\end{aligned}

@@ -1,0 +1,12 @@
+df_tmp = df_customer.join(
+    df_receipt.group_by('customer_id').agg(
+        pl.col('amount').sum()
+    ),
+    how='left', on='customer_id'
+).with_columns(
+    pl.col('amount').is_null().alias('is_buy_flag')
+)
+
+df_down_sampling = df_tmp.group_by('is_buy_flag').apply(
+    lambda x: x.sample(n=df_tmp.filter((pl.col('is_buy_flag') == 0)).height)
+)

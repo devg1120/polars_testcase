@@ -1,0 +1,13 @@
+df_receipt.select([
+    'customer_id',
+    'sales_ymd'
+]).unique().join(
+    df_customer, on='customer_id', how='left'
+).select([
+    'customer_id',
+    'sales_ymd',
+    'application_date',
+    (pl.col('sales_ymd').cast(str).str.strptime(pl.Datetime, '%Y%m%d').dt.epoch(tu='s') -
+     pl.col('application_date').str.strptime(pl.Datetime, '%Y%m%d').dt.epoch(tu='s')).
+    alias('elapsed_epoch')
+]).head(10)

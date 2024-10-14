@@ -1,0 +1,8 @@
+
+df_receipt.select([
+    "sales_ymd", "customer_id", "product_cd", "quantity", "amount"
+]).filter(
+    (pl.col("customer_id") == "CS018205000001")
+    & (pl.col("amount").is_between(1000, 2000)) # ココが範囲指定
+)
+

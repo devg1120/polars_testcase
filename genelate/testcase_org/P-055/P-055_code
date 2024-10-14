@@ -1,0 +1,11 @@
+df_receipt.group_by('customer_id').agg(
+    pl.col('amount').sum()
+).with_columns(
+    pl.when(pl.col('amount') < pl.col('amount').quantile(0.25))
+    .then(1)
+    .when(pl.col('amount') < pl.col('amount').quantile(0.5))
+    .then(2)
+    .when(pl.col('amount') < pl.col('amount').quantile(0.75))
+    .then(3)
+    .otherwise(4).alias('pct_group')
+).sort('customer_id').head(10)

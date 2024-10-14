@@ -1,0 +1,5 @@
+
+df_product.null_count().transpose(include_header=True)
+
+
+

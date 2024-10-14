@@ -1,0 +1,8 @@
+# advance
+
+レコード全体が完全に重複しているレコードを抽出: pl.DataFrame.is_duplicated
+pl.DataFrame.is_duplicatedは、全カラムが完全に重複しているかどうかの真偽値を取得します。
+
+よって以下のようにpl.DataFrame.filterと組み合わせると、完全に一致したレコードのみを抽出することができます。
+
+

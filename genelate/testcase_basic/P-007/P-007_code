@@ -1,0 +1,4 @@
+
+df_receipt.select([
+    "sales_ymd", pl.col("amount"),  0.9 * pl.col("amount")
+]).head(10)

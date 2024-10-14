@@ -1,0 +1,12 @@
+df_tmp = df_product.select([
+    pl.all().exclude(['unit_cost', 'unit_price']),
+    pl.coalesce([
+        pl.col('unit_cost'),
+        pl.median('unit_cost').over('category_small_cd').cast(pl.Int64)
+    ]),
+    pl.coalesce([
+        pl.col('unit_price'),
+        pl.median('unit_price').over('category_small_cd').cast(pl.Int64)
+    ]),
+])
+ans = df_tmp.null_count()

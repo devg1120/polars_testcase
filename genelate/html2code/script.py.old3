@@ -1,0 +1,105 @@
+import bs4
+import csv # モジュール"CSV"の呼び出し
+import sys
+import html
+
+import polars as pl
+
+dtypes = {
+    'customer_id': str,
+    'gender_cd': str,
+    'postal_cd': str,
+    'application_store_cd': str,
+    'status_cd': str,
+    'category_major_cd': str,
+    'category_medium_cd': str,
+    'category_small_cd': str,
+    'product_cd': str,
+    'store_cd': str,
+    'prefecture_cd': str,
+    'tel_no': str,
+    'postal_cd': str,
+    'street': str,
+    'application_date': str,
+    'birth_day': pl.Date
+}
+
+df_customer = pl.read_csv("../data/customer.csv", dtypes=dtypes)
+df_category = pl.read_csv("../data/category.csv", dtypes=dtypes)
+df_product  = pl.read_csv("../data/product.csv",  dtypes=dtypes)
+df_receipt  = pl.read_csv("../data/receipt.csv",  dtypes=dtypes)
+df_store    = pl.read_csv("../data/store.csv",    dtypes=dtypes)
+df_geocode  = pl.read_csv("../data/geocode.csv",  dtypes=dtypes)
+
+
+
+
+#html = '<div>\n   aaa\n  </div>'
+#soup = bs4.BeautifulSoup(html, 'html.parser')
+#print(soup.find('div').get_text())
+
+#sys.exit()
+
+# スクレイピング対象のhtmlファイルからsoupを作成
+soup = bs4.BeautifulSoup(open('01_50.html'), 'html.parser')
+
+links = soup.find_all('h4') # 全てのaタグ要素を取得
+#links = soup.find_all('code') # 全てのaタグ要素を取得
+
+csvlist = [] # 配列を作成
+
+for link in links: # aタグのテキストデータを配列に格納
+    name = link.text.lstrip()
+    if not name.startswith('P-'):
+        continue
+    print("------------- name")
+    print(name)
+    print("------------- name end")
+    sample_txt = name
+    csvlist.append(sample_txt)
+    block = soup.select(f'h4:contains("{name}") ~ blockquote')
+    html = block[0]
+    b_code = bs4.BeautifulSoup(html.get_text(), 'html.parser')
+    print("------------- block")
+    print(b_code)
+    print("------------- block end")
+
+    div_code = soup.select(f'h4:contains("{name}") ~ div')
+    if len(div_code)>0:
+        #print(div_code[0])
+        html = div_code[0]
+        #print(html)
+
+        soup_code = bs4.BeautifulSoup(html.get_text(), 'html.parser')
+        #soup_code = bs4.BeautifulSoup(html.get_text(), 'xml')
+        if soup_code:
+           #code = soup_code.find_all('code') # 全てのaタグ要素を取得
+           #code = soup_code.select('code') # 全てのaタグ要素を取得
+           print("------------- code")
+           print(soup_code.text)
+           print("------------- code end")
+           try:
+
+              r = eval(soup_code.text)
+              #r = eval(soup_code.text.decode())
+              #r = eval(html.unescape(soup_code.decode()))
+              print(r)
+           except Exception as e:
+              print("Exception:")
+              print(name)
+              print(e)
+              sys.exit()
+
+        #sys.exit()
+
+
+'''
+# CSVファイルを開く。ファイルがない場合は新規作成
+f = open("output_sample.csv", "w")
+writecsv = csv.writer(f, lineterminator='\n')
+
+writecsv.writerow(csvlist) # 出力
+
+f.close() # CSVファイルを閉じる
+'''
+

@@ -1,0 +1,9 @@
+df_085 = df_customer.join(
+    df_geocode.group_by('postal_cd').agg([
+        pl.col('longitude').mean(),
+        pl.col('latitude').mean(),
+    ]), 
+    on='postal_cd', how='left'
+)
+
+ans = df_085.head(10)

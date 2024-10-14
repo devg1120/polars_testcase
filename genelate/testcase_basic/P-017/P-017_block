@@ -1,0 +1,6 @@
+# basic 
+
+カラムに行番号を付与: pl.DataFrame.with_row_count("カラム名")
+Polarsにはindexがありませんが、行番号に応じた処理を実施したい場合などに使用します。
+
+

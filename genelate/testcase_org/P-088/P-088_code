@@ -1,0 +1,14 @@
+df_customer_n = df_customer.join(
+    df_087.select([
+        'customer_name', 
+        'postal_cd', 
+        pl.col('customer_id').alias('integration_id')
+    ]),
+    on=['customer_name', 'postal_cd'], how='inner'
+)
+
+ans = df_customer_n.select([
+    pl.col('customer_id').n_unique(),
+    pl.col('integration_id').n_unique(),
+    (pl.col('customer_id').n_unique() - pl.col('integration_id').n_unique()).alias('diff')
+])

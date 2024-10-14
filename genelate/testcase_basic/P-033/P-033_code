@@ -1,0 +1,6 @@
+
+df_product.drop_nulls().select([
+    ((pl.col("unit_price") - pl.col("unit_cost"))\
+        /pl.col("unit_price")).mean()
+])
+

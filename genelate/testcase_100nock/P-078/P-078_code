@@ -1,0 +1,12 @@
+df_receipt.filter(
+    pl.col('customer_id').str.starts_with('Z').not_()
+).group_by('customer_id').agg(
+    pl.col('amount').sum()
+).with_columns([
+    pl.col('amount').quantile(0.25).alias('1qtr'),
+    pl.col('amount').quantile(0.75).alias('3qtr'),
+    (pl.col('amount').quantile(0.75) - pl.col('amount').quantile(0.25)).alias('iqr'),
+]).filter(
+    (pl.col('amount') < pl.col('1qtr') - 1.5 * pl.col('iqr')) |
+    (pl.col('amount') > pl.col('3qtr') + 1.5 * pl.col('iqr'))
+).sort('customer_id').head(10)

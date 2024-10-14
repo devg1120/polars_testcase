@@ -1,0 +1,2 @@
+df_gender_std = df_customer.select(['gender_cd', 'gender']).unique()
+ans = df_customer.drop('gender')

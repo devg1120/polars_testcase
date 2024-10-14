@@ -1,0 +1,2 @@
+df_tmp = df_product.fill_null(strategy='mean')
+ans = df_tmp.null_count()

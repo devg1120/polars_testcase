@@ -1,0 +1,9 @@
+# advance
+
+複数カラムが重複しているレコードの抽出
+複数カラムが重複する場合は、少し工夫が必要です。
+
+pl.DataFrame.selectとfilterおよび全体の重複を見るpl.DataFrame.is_duplicatedを組み合わせる必要があります
+
+以下は誕生日と郵便番号が重複している"customer_name"を抽出する処理です。
+

@@ -1,0 +1,5 @@
+df_receipt.select([
+    'receipt_no', 
+    'receipt_sub_no', 
+    pl.col('sales_ymd').cast(pl.Utf8).str.strptime(pl.Date, "%Y%m%d")
+]).head(10)

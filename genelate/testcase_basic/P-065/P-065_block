@@ -1,0 +1,9 @@
+# advance
+
+カラムに対する欠損値埋め: pl.Expr.fill_null, pl.Expr.fill_nan
+カラムに対してはpl.Expr.fill_nullを使って埋めることができます。
+
+カラムに対する場合は、以下のように別の列の値で埋めることも可能です。
+
+pl.Expr.fill_nanもほぼ同様ですが、strategy引数はないため注意が必要です。
+

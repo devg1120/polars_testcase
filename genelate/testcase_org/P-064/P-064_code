@@ -1,0 +1,4 @@
+df_product.select(
+    ((pl.col('unit_price') - pl.col('unit_cost')) / pl.col('unit_price'))
+    .alias('unit_profit_rate').mean()
+)

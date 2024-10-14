@@ -1,0 +1,6 @@
+# advance
+
+サンプリング: pl.DataFrame.sample
+サンプリングは、pandasと同様sampleで実行できます。
+
+

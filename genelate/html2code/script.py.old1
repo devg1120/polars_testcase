@@ -1,0 +1,53 @@
+import bs4
+import csv # モジュール"CSV"の呼び出し
+import sys
+
+
+html = '<div>\n   aaa\n  </div>'
+soup = bs4.BeautifulSoup(html, 'html.parser')
+print(soup.find('div').get_text())
+
+#sys.exit()
+
+# スクレイピング対象のhtmlファイルからsoupを作成
+soup = bs4.BeautifulSoup(open('01_50.html'), 'html.parser')
+
+links = soup.find_all('h4') # 全てのaタグ要素を取得
+#links = soup.find_all('code') # 全てのaタグ要素を取得
+
+csvlist = [] # 配列を作成
+
+for link in links: # aタグのテキストデータを配列に格納
+    name = link.text.lstrip()
+    print(name)
+    sample_txt = name
+    csvlist.append(sample_txt)
+    block = soup.select(f'h4:contains("{name}") ~ blockquote')
+    print("------------- block")
+    print(block[0])
+    print("------------- block end")
+    div_code = soup.select(f'h4:contains("{name}") ~ div')
+    if len(div_code)>0:
+        #print(div_code[0])
+        html = div_code[0]
+        #print(html)
+        #html = '<div>\n   aaa\n  </div>'
+        soup_code = bs4.BeautifulSoup(html.get_text(), 'html.parser')
+        if soup_code:
+           #code = soup_code.find_all('code') # 全てのaタグ要素を取得
+           #code = soup_code.select('code') # 全てのaタグ要素を取得
+           print("------------- code")
+           print(soup_code)
+           print("------------- code end")
+
+
+'''
+# CSVファイルを開く。ファイルがない場合は新規作成
+f = open("output_sample.csv", "w")
+writecsv = csv.writer(f, lineterminator='\n')
+
+writecsv.writerow(csvlist) # 出力
+
+f.close() # CSVファイルを閉じる
+'''
+

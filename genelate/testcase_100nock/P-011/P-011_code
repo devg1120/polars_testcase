@@ -1,0 +1,1 @@
+df_customer.filter(pl.col('customer_id').str.ends_with('1')).head(10)

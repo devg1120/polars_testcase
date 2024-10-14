@@ -1,0 +1,11 @@
+amount = pl.col('amount')
+
+ans = df_receipt.filter(
+    pl.col('customer_id').str.starts_with('Z').not_()
+).group_by('customer_id').agg(
+    pl.col('amount').sum()
+).select([
+    'customer_id',
+    'amount',
+    ((amount - amount.mean()) / amount.std(ddof=0)).alias('std_amount')
+]).sort('customer_id').head(10)

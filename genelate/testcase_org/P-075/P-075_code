@@ -1,0 +1,1 @@
+df_customer.sample(frac=0.01).head(3)

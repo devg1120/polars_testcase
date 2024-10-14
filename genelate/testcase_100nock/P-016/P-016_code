@@ -1,0 +1,1 @@
+df_store.filter(pl.col('tel_no').str.contains(r'^[0-9]{3}-[0-9]{3}-[0-9]{4}$'))

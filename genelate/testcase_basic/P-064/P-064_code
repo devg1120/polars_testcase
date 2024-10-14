@@ -1,0 +1,7 @@
+
+df = pl.DataFrame(
+    {"A": [1, 2, 3], "B": [None, None, None]}
+)
+ans = df.fill_null(pl.col("A"))
+
+

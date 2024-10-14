@@ -1,0 +1,1 @@
+df_customer.filter(pl.col('status_cd').str.contains(r'^[A-F]')).head(10)

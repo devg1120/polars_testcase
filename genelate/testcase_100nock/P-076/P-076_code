@@ -1,0 +1,22 @@
+
+# apply => map_elements
+
+#df_customer.group_by('gender_cd').apply(
+#    lambda x: x.sample(frac=0.1)
+#).select(
+#    pl.col('gender_cd').value_counts()
+#)
+
+df = pl.DataFrame(
+    {
+        "a": [1, 2, 3, 1],
+        "b": ["a", "b", "c", "c"],
+    }
+)
+
+
+ans = df.with_columns(  
+    pl.col("a")
+    .map_elements(lambda x: x * 2, return_dtype=pl.Int64)
+    .alias("a_times_2"),
+)

@@ -1,0 +1,6 @@
+
+df_receipt.select([
+    "sales_ymd", "customer_id", "product_cd", "amount"
+]).rename({"sales_ymd": "sales_date"}).head(10)
+
+

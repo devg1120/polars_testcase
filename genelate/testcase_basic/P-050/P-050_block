@@ -1,0 +1,8 @@
+# advance
+
+ユニーク処理・重複の対応
+ユニークな行の抽出: pl.DataFrame.unique
+pl.DataFrame.uniqueを使ってsubsetで指定したカラムについてユニークなレコードを抽出可能です。
+
+重複は削除された状態で表示されます。
+

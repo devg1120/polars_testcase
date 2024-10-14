@@ -1,0 +1,5 @@
+# basic 
+
+カラム名にsuffix付与: pl.Expr.suffix
+以下でsuffixを付与できます。
+

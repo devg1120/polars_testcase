@@ -1,0 +1,32 @@
+
+import math 
+def distance(x1: pl.Expr, y1: pl.Expr
+    , x2: pl.Expr, y2: pl.Expr) -> pl.Expr:
+
+    lon1_rad = x1 * math.pi / 180
+    lon2_rad = x2 * math.pi / 180
+    lat1_rad = y1 * math.pi / 180
+    lat2_rad = y2 * math.pi / 180
+
+    L = 6371 * (
+        lat1_rad.sin() * lat2_rad.sin() + \
+            lat1_rad.cos() * lat2_rad.cos() * (lon1_rad - lon2_rad).cos()
+    ).arccos()
+
+    return L
+
+df_customer.join(
+    df_geocode.group_by("postal_cd").agg([
+        pl.col("longitude").mean(), pl.col("latitude").mean()
+    ]), on="postal_cd", how="left"
+).join(
+    df_store, left_on="application_store_cd", right_on="store_cd"
+).select([
+    "customer_id"
+    , pl.col("address").alias("customer_address")
+    , pl.col("address_right").alias("store_address")
+    , distance( pl.col("longitude") , pl.col("latitude")
+        , pl.col("longitude_right") , pl.col("latitude_right")
+        ).alias("distance")
+]).sort("customer_id").head(10)
+

@@ -1,0 +1,6 @@
+
+df_receipt.select(
+    pl.col("^receipt_.*$")
+)
+
+

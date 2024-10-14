@@ -1,0 +1,5 @@
+df_customer.group_by('gender_cd').apply(
+    lambda x: x.sample(frac=0.1)
+).select(
+    pl.col('gender_cd').value_counts()
+)

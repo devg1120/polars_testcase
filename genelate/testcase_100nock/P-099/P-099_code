@@ -1,0 +1,11 @@
+df_093 = df_product.join(
+    df_category.select(['category_small_cd', pl.col('^category_.*_name$')]), 
+    how='left', on='category_small_cd'
+)
+
+
+df_093.write_csv(
+    './P_df_product_full_UTF-8_TSV.tsv', 
+    separator='\t'
+)
+ans =   './P_df_product_full_UTF-8_TSV.tsv'

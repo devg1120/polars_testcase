@@ -1,0 +1,22 @@
+
+df_customer.select(
+    ["customer_id", "gender_cd", "age"]
+).join(
+    df_receipt.select(
+        ["customer_id", "amount"]
+    ), how="left", on="customer_id"
+).select([
+    "gender_cd"
+    , ((pl.col('age') / 10).floor() * 10).cast(pl.Int16).alias("era")
+    , "amount"
+]).group_by(["gender_cd", "era"]).agg(
+    pl.col("amount").sum()
+).pivot(
+    values="amount", index="era", columns="gender_cd"
+).sort("era").select([
+    "era"
+    , pl.col("0").alias("male")
+    , pl.col("1").alias("female")
+    , pl.col("9").alias("unknown")
+])
+

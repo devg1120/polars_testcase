@@ -1,0 +1,16 @@
+df_tmp = df_customer.join(
+    df_receipt.group_by('customer_id').agg([
+        pl.col('amount').filter(
+            pl.col('sales_ymd').is_between(20190000, 20191231, closed='both')
+        ).sum().alias('amount_19'),
+        pl.col('amount').sum().alias('amount_all'),
+    ]).with_columns(
+        (pl.col('amount_19') / pl.col('amount_all')).alias('amount_rate')
+    ), 
+    on='customer_id', 
+    how='left'
+).fill_null(0)
+
+ans = df_tmp.filter(
+    pl.col('amount_rate') > 0
+).head(10)

@@ -1,0 +1,5 @@
+# advance
+
+すべての列をそれぞれpl.Seriesで抽出: pl.DataFrame.get_columns
+pl.DataFrame.get_columnsでそれぞれの列がpl.Seriesとなったリストを取得できます。
+

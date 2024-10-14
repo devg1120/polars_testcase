@@ -1,0 +1,13 @@
+
+df_receipt.filter(
+    #pl.col("customer_id").str.starts_with("Z").is_not()
+    pl.col("customer_id").str.starts_with("Z").not_()
+).group_by("customer_id").agg([
+    pl.col("amount").sum()
+]).select([
+    "customer_id"
+    , pl.col("amount").log10().alias("amount_log10")
+]).sort("customer_id").head(10)
+
+
+

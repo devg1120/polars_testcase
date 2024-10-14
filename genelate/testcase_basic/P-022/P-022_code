@@ -1,0 +1,6 @@
+
+df_customer.select([
+    "customer_id"
+    , pl.col("postal_cd").str.slice(0,3)
+])
+

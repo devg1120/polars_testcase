@@ -1,0 +1,5 @@
+# basic 
+
+含まれるかの判定: pl.Expr.is_in
+含まれるかの判定はpl.Expr.is_inで記述可能です。
+

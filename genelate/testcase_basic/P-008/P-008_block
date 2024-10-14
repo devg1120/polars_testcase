@@ -1,0 +1,5 @@
+# basic 
+
+カラムのリネーム２： pl.DataFrame.rename
+alias以外のリネーム方法として、Polarsでもpandasと同じpl.DataFrame.renameが使用可能です。
+

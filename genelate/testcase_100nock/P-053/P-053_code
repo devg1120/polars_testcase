@@ -1,0 +1,10 @@
+df_customer.with_columns(
+    pl.when(pl.col('postal_cd').str.slice(0, 3).
+            cast(pl.Int16).is_between(100, 209, closed='both'))
+    .then(1)
+    .otherwise(0).alias('is_tokyo')
+).join(
+    df_receipt, on='customer_id', how='inner'
+).group_by('is_tokyo').agg(
+    pl.col('customer_id').n_unique()
+)

@@ -1,0 +1,10 @@
+pl.read_csv(
+    './P_df_product_full_UTF-8.csv',
+    has_header=False,
+    new_columns=[
+        'product_cd', 'category_major_cd',
+        'category_medium_cd', 'category_small_cd',
+        'unit_price','unit_cost','category_major_name',
+        'category_medium_name', 'category_small_name',
+    ]
+).head(3)

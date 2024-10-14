@@ -1,0 +1,6 @@
+
+df_receipt.get_columns()[
+    #df_receipt.find_idx_by_name("sales_ymd")
+    df_receipt.get_column_index("sales_ymd")
+]
+

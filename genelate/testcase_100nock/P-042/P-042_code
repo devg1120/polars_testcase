@@ -1,0 +1,14 @@
+(df_receipt
+    .group_by('sales_ymd')
+    .agg(pl.col('amount').sum())
+    .sort('sales_ymd')
+    .with_columns([
+        pl.col('sales_ymd').shift(1).alias('sales_ymd_lag1'),
+        pl.col('amount').shift(1).alias('amount_lag1'),
+        pl.col('sales_ymd').shift(2).alias('sales_ymd_lag2'),
+        pl.col('amount').shift(2).alias('amount_lag2'),
+        pl.col('sales_ymd').shift(3).alias('sales_ymd_lag3'),
+        pl.col('amount').shift(3).alias('amount_lag3'),
+    ])
+    .head(10)
+)

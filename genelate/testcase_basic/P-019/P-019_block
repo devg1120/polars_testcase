@@ -1,0 +1,4 @@
+# basic 
+
+なお、条件分岐はUDF（ユーザ定義関数）をlambda式を使って作成し、apply（この場合pl.Expr.apply）する形でも可能です。
+

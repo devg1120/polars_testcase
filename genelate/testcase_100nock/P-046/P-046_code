@@ -1,0 +1,5 @@
+df_customer.select([
+    'customer_id', 
+    pl.col('application_date').str.strptime(pl.Date, "%Y%m%d")
+]).head(10)
+

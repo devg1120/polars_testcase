@@ -1,0 +1,3 @@
+(df_store.with_columns(pl.lit(0).alias('key'))
+    .join(df_product.with_columns(pl.lit(0).alias('key')), on='key', how='full')
+).shape

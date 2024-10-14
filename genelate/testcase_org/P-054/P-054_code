@@ -1,0 +1,14 @@
+df_customer.with_columns(
+    pl.when(pl.col('address').str.contains('埼玉県'))
+    .then(11)
+    .when(pl.col('address').str.contains('千葉県'))
+    .then(12)
+    .when(pl.col('address').str.contains('東京都'))
+    .then(13)
+    .when(pl.col('address').str.contains('神奈川県'))
+    .then(14).alias('prefecture')
+).select([
+    'customer_id',
+    'address',
+    'prefecture'
+]).head(10)

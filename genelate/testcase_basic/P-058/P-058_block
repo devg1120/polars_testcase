@@ -1,0 +1,6 @@
+# advance
+
+欠損値対応
+Intでもnullを扱い可能
+Polarsでは欠損値をInt型でも扱うことが可能です。
+

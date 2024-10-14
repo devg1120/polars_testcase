@@ -1,0 +1,7 @@
+# basic 
+
+カラム選択: pl.DataFrame.select
+カラムの選択はpl.DataFrame.selectが標準的な方法です。
+
+（以下、100本ノックのP-002に相当）
+

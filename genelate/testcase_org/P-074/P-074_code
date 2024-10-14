@@ -1,0 +1,6 @@
+df_receipt.select([
+    pl.col('sales_ymd').cast(str).str.strptime(pl.Date, '%Y%m%d'),
+]).with_columns([
+    pl.col('sales_ymd').dt.truncate('1w').alias('monday'),
+    (pl.col('sales_ymd').dt.weekday() - 1).alias('elapsed_days')
+]).head(10)

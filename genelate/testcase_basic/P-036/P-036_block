@@ -1,0 +1,10 @@
+# basic 
+
+グループ化: pl.DataFrame.groupby
+グループ化した後の集約はpandasと同様、pl.DataFrame.groupby -> pl.GroupBy.aggという形で記述します。ここでもpl.col("カラム名)が生きます。
+
+注意点としては、groupbyした結果の順序が実行の都度変化しますので、固定したい場合はgroupbyのmaintain_order=Trueを引数に設定するか、グループ化したキーでpl.DataFrame.sortをする必要があります。
+
+集約関数の一例 合計: pl.Expr.sum
+以下は"store_cd"ごとにsumを使用する例です。（100本ノックのP-023相当）
+

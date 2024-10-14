@@ -1,0 +1,1 @@
+pl.read_csv('../data/P_df_product_full_UTF-8_header.csv').head(3)

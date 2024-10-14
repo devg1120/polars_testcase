@@ -1,0 +1,10 @@
+# advance
+
+サンプリング: pl.DataFrame.sample
+サンプリングは、pandasと同様sampleで実行できます。
+
+
+/----------/
+
+df_customer.sample(fraction=0.01).head(10)
+

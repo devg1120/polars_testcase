@@ -1,0 +1,19 @@
+df_receipt.select([
+    'customer_id',
+    'sales_ymd'
+]).unique().join(
+    df_customer, on='customer_id', how='left'
+).with_columns([
+    pl.col('sales_ymd').cast(str).str.strptime(pl.Datetime, '%Y%m%d').alias('date1'),
+    pl.col('application_date').str.strptime(pl.Datetime, '%Y%m%d').alias('date2')
+]).select([
+    'customer_id',
+    'sales_ymd',
+    'application_date',
+    'date1',
+    'date2',
+    (
+        (pl.col('date1').dt.year() - pl.col('date2').dt.year()) * 12 + 
+         pl.col('date1').dt.month() - pl.col('date2').dt.month()
+    ).alias('elapsed_months'),
+]).head(10)

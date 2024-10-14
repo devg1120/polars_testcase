@@ -1,0 +1,1 @@
+pl.read_csv('./P_df_product_full_UTF-8_TSV.tsv', separator='\t').head(3)

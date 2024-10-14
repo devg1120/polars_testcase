@@ -1,0 +1,11 @@
+import numpy as np
+
+df = pl.DataFrame({
+    "a": [1,2,3,4]
+    , "b": [1,2,3,None]
+    , "c": [1,2,3,np.nan]
+}, strict=False)
+ans = df.dtypes
+
+
+

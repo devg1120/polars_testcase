@@ -1,0 +1,5 @@
+# basic 
+
+カラムのリネーム: pl.Expr.alias
+以下のように、pl.Expr.aliasを記述すればリネームすることができます。
+

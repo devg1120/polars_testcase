@@ -1,0 +1,16 @@
+gender_mapping = {
+    '0': 'male',
+    '1': 'female',
+    '9': 'unknown'
+}
+
+ans = (df_customer
+    .join(df_receipt, how='left', on='customer_id')
+    .with_columns([
+        ((pl.col('age') / 10).floor() * 10).alias('era'),
+	pl.col('gender_cd').replace_strict(gender_mapping).alias('gender')
+    ])
+    .group_by(['gender', 'era']).agg(pl.col('amount').sum())
+    .pivot(values='amount', index='era', on='gender')
+    .sort('era')
+)

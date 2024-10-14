@@ -1,0 +1,16 @@
+df_ts_amount = df_receipt.group_by(pl.col('sales_ymd') // 100).agg(
+    pl.col('amount').sum()
+).sort('sales_ymd')
+
+tscv = model_selection.TimeSeriesSplit(gap=0, max_train_size=12, n_splits=3, test_size=6)
+
+series_list = []
+for train_index, test_index in tscv.split(df_ts_amount):
+    series_list.append(
+        (df_ts_amount.with_row_count('index').filter(pl.col('index').is_in(pl.lit(train_index))), 
+         df_ts_amount.with_row_count('index').filter(pl.col('index').is_in(pl.lit(test_index))))
+    )
+
+df_train_1, df_test_1 = series_list[0]
+df_train_2, df_test_2 = series_list[1]
+df_train_3, df_test_3 = series_list[2]

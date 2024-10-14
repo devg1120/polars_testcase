@@ -1,0 +1,5 @@
+
+df_store.filter(
+    pl.col("store_cd").str.starts_with("S14")
+).head(10)
+

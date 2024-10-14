@@ -1,0 +1,13 @@
+
+df_customer.select([
+    "customer_id", "birth_day", "gender_cd"
+    , pl.when(pl.col("age") >= 60)\
+        .then(60)\
+        .otherwise(
+            ((pl.col("age")/10).floor()*10).cast(pl.Int32)
+        ).alias("age")
+]).select([
+    "customer_id", "birth_day"
+    , pl.concat_str([pl.col("gender_cd"), pl.col("age")], separator="_")
+]).head(10)
+

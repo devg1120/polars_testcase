@@ -1,0 +1,5 @@
+# basic 
+
+文字列のスライス結果を格納: pl.Expr.str.slice
+str.sliceを使って文字列をスライスすることができます。
+

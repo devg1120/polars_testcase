@@ -1,0 +1,7 @@
+
+df_receipt.select([
+    pl.all()
+    , pl.col("amount")\
+        .mean().over("customer_id").alias("amount_mean_by_customer_id")
+])
+

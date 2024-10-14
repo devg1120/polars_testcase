@@ -1,0 +1,5 @@
+# basic 
+
+カラムの追加: pl.DataFrame.with_columns
+select時に計算結果を格納することができますが、pl.DataFrame.with_columnsを使ってDataFrameに列を追加することも可能です。
+

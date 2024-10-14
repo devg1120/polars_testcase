@@ -1,0 +1,5 @@
+# advance
+
+欠損かどうか: pl.Expr.is_null, pl.Expr.is_nan
+is_duplicatedやis_uniqueなどと違い、is_nullはpl.DataFrameには存在せず、pl.Exprのみに存在します。
+

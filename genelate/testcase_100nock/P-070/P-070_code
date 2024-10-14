@@ -1,0 +1,12 @@
+df_receipt.select([
+    'customer_id',
+    'sales_ymd'
+]).unique().join(
+    df_customer, on='customer_id', how='left'
+).select([
+    'customer_id',
+    'sales_ymd',
+    'application_date',
+    (pl.col('sales_ymd').cast(str).str.strptime(pl.Date, '%Y%m%d') -
+     pl.col('application_date').str.strptime(pl.Date, '%Y%m%d')).alias('elapsed_days')
+]).head(10)

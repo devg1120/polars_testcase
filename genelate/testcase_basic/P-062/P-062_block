@@ -1,0 +1,10 @@
+# advance
+
+DataFrame全体への欠損値埋め: pl.DataFrame.fill_null, pl.DataFrame.fill_nan
+欠損値埋めはDataFrame全体への処理が可能です。pl.DataFrame.fill_nullが適用可能です。
+
+df_product.fill_null(strategy='mean')
+fill_nullはvalue引数に固定値を指定するか、strategy引数に'forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'いずれかを指定することで埋めることができます。
+
+同様の処理がpl.DataFrame.fill_nanとしてありますが、こちらはstorategyが指定できないため注意が必要です。
+

@@ -1,0 +1,5 @@
+
+series_list = df_receipt.get_columns()
+
+ans = series_list
+

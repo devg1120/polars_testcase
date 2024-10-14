@@ -1,0 +1,1 @@
+df_receipt.select(pl.col('customer_id').n_unique())

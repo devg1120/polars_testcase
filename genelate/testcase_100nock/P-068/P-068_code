@@ -1,0 +1,5 @@
+df_product.select([
+    'product_cd',
+    'unit_price',
+    ((pl.col('unit_price') * 1.1).floor()).alias('tax_price')
+]).head(10)

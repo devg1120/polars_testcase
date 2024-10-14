@@ -1,0 +1,7 @@
+df_tmp = df_product.select([
+    pl.all().exclude(['unit_cost', 'unit_price']),
+    pl.col('unit_cost').fill_null(pl.col('unit_cost').median().cast(pl.Int64)),
+    pl.col('unit_price').fill_null(pl.median('unit_price').cast(pl.Int64)),
+])
+
+ans = df_tmp.null_count()

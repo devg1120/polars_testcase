@@ -1,0 +1,6 @@
+df_receipt.select([
+    'sales_ymd', 'customer_id', 'product_cd', 'amount'
+]).filter(
+    (pl.col('customer_id') == "CS018205000001") & 
+    (pl.col('amount') >= 1000)
+)

@@ -1,0 +1,4 @@
+
+df_customer.get_column('gender_cd').value_counts()
+
+

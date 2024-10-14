@@ -1,0 +1,7 @@
+
+df_receipt.join(
+    df_store.select(["store_cd", "store_name"]),
+    how="inner", on="store_cd"
+).head(10)
+
+

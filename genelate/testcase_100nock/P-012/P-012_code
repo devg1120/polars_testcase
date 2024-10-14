@@ -1,0 +1,1 @@
+df_store.filter(pl.col('address').str.contains('横浜市'))

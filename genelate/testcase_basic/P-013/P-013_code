@@ -1,0 +1,5 @@
+
+df_receipt.select([
+    pl.col(["quantity", "amount"]).prefix("sample_")
+])
+

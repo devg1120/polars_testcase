@@ -1,0 +1,5 @@
+# basic 
+
+ウィンドウ関数: pl.Expr.over
+SQLのウィンドウ関数のようなpl.Expr.overが使用できます。以下は"customer_id"ごとに平均を計算して、それを新しい列として追加するコードです。
+

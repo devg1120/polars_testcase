@@ -1,0 +1,7 @@
+df_receipt.select([
+    pl.col('amount').quantile(0).alias('q_0'),
+    pl.col('amount').quantile(0.25).alias('q_25'),
+    pl.col('amount').quantile(0.5).alias('q_5'),
+    pl.col('amount').quantile(0.75).alias('q_75'),
+    pl.col('amount').quantile(1).alias('q_100'),
+])

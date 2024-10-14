@@ -1,0 +1,4 @@
+df_customer.select([
+    'customer_id', 
+    pl.col('birth_day').dt.strftime('%Y%m%d')
+]).head(10)

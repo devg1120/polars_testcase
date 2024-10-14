@@ -1,0 +1,8 @@
+df_customer.filter(
+    (pl.col('gender_cd') == '1') & 
+    (pl.col('customer_id').str.starts_with('Z').not_())
+).join(
+    df_receipt, how='left', on='customer_id'
+).group_by('customer_id').agg(
+    pl.col('amount').sum().fill_null(0)
+).head(10)

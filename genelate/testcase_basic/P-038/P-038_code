@@ -1,0 +1,8 @@
+
+df_receipt.group_by("store_cd").agg([
+    pl.col("product_cd").mode()
+]).select([
+    "store_cd"
+    , pl.col("product_cd")
+]).explode(pl.col("product_cd"))
+

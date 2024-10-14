@@ -1,0 +1,8 @@
+
+df_receipt.select([
+    "sales_ymd", "amount"
+    , pl.when(pl.col("amount")>100).then(1)\
+        .otherwise(0).alias("sales_flg")
+]).head(10)
+
+

@@ -1,0 +1,12 @@
+df_receipt.join(
+    df_product, how='inner', on='product_cd'
+).group_by('customer_id').agg([
+    (pl.col('quantity') * pl.col('unit_price')).sum().alias('amount_all'),
+    (pl.col('quantity') * pl.col('unit_price')).filter(
+        pl.col('category_major_cd')=='07'
+    ).sum().alias('amount_07')
+]).filter(
+    pl.col('amount_07').is_not_null()
+).with_columns(
+    (pl.col('amount_07') / pl.col('amount_all')).alias('sales_rate')
+).sort('customer_id').head(10)

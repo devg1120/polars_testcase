@@ -1,0 +1,11 @@
+
+df_customer.select([
+    "customer_id", "address"
+    , pl.when(pl.col("address").str.starts_with("埼玉県")).then(11)\
+        .when(pl.col("address").str.starts_with("千葉県")).then(12)\
+        .when(pl.col("address").str.starts_with("東京都")).then(13)\
+        .when(pl.col("address").str.starts_with("神奈川県")).then(14)\
+        .alias("prefecture_cd")
+]).head(10)
+
+

@@ -1,0 +1,7 @@
+df_customer.select([
+    'customer_id',
+    'birth_day',
+    (pl.when(pl.col('age') >= 60)
+    .then(60)
+    .otherwise(pl.col('age')) / 10).floor().alias('era')
+]).head(10)

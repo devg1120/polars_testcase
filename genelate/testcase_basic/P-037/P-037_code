@@ -1,0 +1,8 @@
+
+df_receipt.group_by('customer_id').agg([
+    pl.col("sales_ymd").min().alias("sales_ymd_min")
+    , pl.col("sales_ymd").max().alias("sales_ymd_max")
+]).filter(
+    pl.col('sales_ymd_min') != pl.col('sales_ymd_max')
+).sort('customer_id').head(10)
+

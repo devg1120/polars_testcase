@@ -1,0 +1,5 @@
+# basic 
+
+否定条件: pl.Expr.is_not
+否定条件は~でも可能ですが、pl.Expr.is_notを使用することでも記述が可能です。
+

@@ -1,0 +1,5 @@
+
+df_receipt.select(
+    pl.exclude(["sales_ymd", "receipt_no"])
+)
+

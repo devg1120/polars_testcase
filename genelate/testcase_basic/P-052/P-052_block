@@ -1,0 +1,6 @@
+# advance
+
+ユニーク数: pl.Expr.n_unique
+ユニーク数は、pl.Expr.n_unique()またはpl.Expr.unique().count()で取得可能です。
+
+

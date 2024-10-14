@@ -1,0 +1,23 @@
+df_087 = df_customer.join(
+    df_receipt.group_by('customer_id').agg(
+        pl.col('amount').sum()
+    ),
+    on='customer_id', how='left'
+).sort(
+    ['amount', 'customer_id'], descending=[True, False]
+).unique(subset=['customer_name', 'postal_cd'])
+
+df_customer_n = df_customer.join(
+    df_087.select([
+        'customer_name', 
+        'postal_cd', 
+        pl.col('customer_id').alias('integration_id')
+    ]),
+    on=['customer_name', 'postal_cd'], how='inner'
+)
+
+ans = df_customer_n.select([
+    pl.col('customer_id').n_unique(),
+    pl.col('integration_id').n_unique(),
+    (pl.col('customer_id').n_unique() - pl.col('integration_id').n_unique()).alias('diff')
+])

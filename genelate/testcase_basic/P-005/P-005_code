@@ -1,0 +1,7 @@
+df_receipt.select([
+    pl.col("sales_ymd").alias("sales_date")
+    , "customer_id", "product_cd", "amount"
+]).head(10)
+
+
+

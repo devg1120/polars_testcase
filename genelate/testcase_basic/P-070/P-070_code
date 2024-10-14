@@ -1,0 +1,17 @@
+
+df_customer.lazy().select([
+    "customer_id"
+    , pl.when(
+        pl.col("postal_cd").str.slice(0,3)
+            .cast(pl.Int32).is_between(100, 209)
+        ).then(1).otherwise(0).alias("is_tokyo")
+]).join(
+    df_receipt.lazy().select([
+        pl.col("customer_id")
+    ]), how="inner", on="customer_id"
+#).groupby("postal_cd").agg(
+).group_by("postal_cd").agg(
+    pl.col("customer_id").unique().count()
+).collect()
+
+

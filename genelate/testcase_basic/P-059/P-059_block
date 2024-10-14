@@ -1,0 +1,7 @@
+# advance
+
+nullとNaNの違い
+NumPyのnp.nanを要素に入れた場合はNaN扱い、Noneの場合はnullとして区別して扱われます。（pandasではどちらもNaN扱いです）
+
+またNaNはInt型では表現できないため、Float型になってしまう点は注意が必要です。
+

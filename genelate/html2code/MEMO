@@ -1,0 +1,28 @@
+
+pip install beautifulsoup4
+
+
+
+Polarsでデータサイエンス100本ノックを解く（前編）
+https://qiita.com/_jinta/items/28442d25bba067c13bb7
+
+Polarsでデータサイエンス100本ノックを解く（後編）
+https://qiita.com/_jinta/items/394b1682893e5991d592
+
+データサイエンス100本ノック（構造化データ加工編）
+https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess
+
+
+gen
+    html => testcase
+
+
+exec
+
+   testcase => run 
+
+build
+
+   testcase => md
+
+python exec.py ../testcase_100nock -It 76

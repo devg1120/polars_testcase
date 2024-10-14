@@ -1,0 +1,12 @@
+
+
+df_receipt.filter(
+    pl.col("customer_id").str.starts_with("Z").not_()
+).group_by("customer_id").agg([
+    pl.col("amount").sum()
+]).select([
+    "customer_id"
+    , ((pl.col("amount") - pl.col("amount").mean())\
+        /pl.col("amount").std()).alias("amount_ss")
+]).sort("customer_id").head(10)
+

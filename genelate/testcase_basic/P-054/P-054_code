@@ -1,0 +1,5 @@
+
+df_receipt.filter(
+    df_receipt.is_duplicated()
+)
+

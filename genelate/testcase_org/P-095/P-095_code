@@ -1,0 +1,4 @@
+df_093.to_pandas().to_csv(
+    '../data/P_df_product_full_CP932_header.csv', 
+    encoding='CP932', index=False
+)

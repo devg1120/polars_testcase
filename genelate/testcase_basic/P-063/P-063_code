@@ -1,0 +1,9 @@
+
+import numpy as np
+
+df = pl.DataFrame(
+    {"A": [1, 2, 3], "B": [np.nan, np.nan, np.nan]}
+)
+ans = df.fill_nan(pl.col("A"))
+
+

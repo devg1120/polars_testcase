@@ -1,0 +1,9 @@
+
+df_customer.select([
+    "customer_name", "birth_day", "postal_cd"
+]).filter(
+    df_customer.select(["birth_day", "postal_cd"]).is_duplicated()
+).sort("birth_day")
+
+
+

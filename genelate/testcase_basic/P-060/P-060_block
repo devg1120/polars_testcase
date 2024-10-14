@@ -1,0 +1,6 @@
+# advance
+
+欠損値のカウント: pl.DataFrame.null_count
+各カラムの欠損値をpl.DataFrame.null_countで数えることができます。（なお、nan_countは存在しないため注意が必要）
+
+

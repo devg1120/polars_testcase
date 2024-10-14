@@ -1,0 +1,12 @@
+
+df = pl.DataFrame(
+    {"A": [1, 2, 3], "B": [4, 5, None], "C": [None, None, None]}
+)
+ans = df.select(
+    pl.coalesce([
+        pl.col("C"), pl.col("B"), pl.col("A")
+    ])
+)
+
+
+

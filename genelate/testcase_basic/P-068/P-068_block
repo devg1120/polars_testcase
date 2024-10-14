@@ -1,0 +1,6 @@
+# advance
+
+転置: pl.DataFrame.transpose
+pl.DataFrame.transposeによって、カラム方向とレコード方向を入れ替えることができます。
+
+

@@ -1,0 +1,6 @@
+
+df_receipt.select(
+    "sales_ymd"
+).with_row_count("row_number")
+
+

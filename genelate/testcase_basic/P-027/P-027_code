@@ -1,0 +1,6 @@
+
+df_receipt.select([
+    pl.col("sales_ymd").cast(pl.Utf8)
+    , "receipt_no", "receipt_sub_no"
+]).head(10)
+

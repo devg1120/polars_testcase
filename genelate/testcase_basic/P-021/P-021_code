@@ -1,0 +1,11 @@
+
+df_receipt.filter(
+    pl.col("customer_id").str.starts_with("Z").not_()
+).group_by("customer_id").agg(
+    pl.col("amount").sum()
+).select([
+    "customer_id", "amount"
+    , (pl.col("amount")>20).alias("sales_flg") # 判定結果を格納
+]).sort("customer_id").head(10)
+
+

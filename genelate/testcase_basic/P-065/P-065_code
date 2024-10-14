@@ -1,0 +1,10 @@
+
+df = pl.DataFrame(
+    {"A": [1, 2, 3], "B": [None, None, None]}
+)
+ans = df.select([
+    pl.col("A")
+    , pl.col("B").fill_null(pl.col("A"))
+])
+
+

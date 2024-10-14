@@ -1,0 +1,4 @@
+
+df_customer.sort(pl.col("birth_day"), descending=True).head(10)
+
+

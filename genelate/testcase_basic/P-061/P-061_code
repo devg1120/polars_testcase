@@ -1,0 +1,8 @@
+
+df_product.filter(
+    (pl.col("unit_cost").is_null())
+    | (pl.col("unit_price").is_null())
+)
+
+
+

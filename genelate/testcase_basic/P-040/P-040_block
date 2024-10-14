@@ -1,0 +1,8 @@
+# basic 
+
+結合・分割処理
+指定キーでの結合: pl.DataFrame.join
+Polarsの結合処理はjoinという関数名で実装されており、SQLクエリの間隔に直感的に近くなっています。
+
+以下はdf_receiptとdf_storeをjoinする例です。（100本ノックのP-036相当）
+

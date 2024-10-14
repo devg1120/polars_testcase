@@ -1,0 +1,5 @@
+# basic 
+
+条件分岐に応じた結果の格納: pl.when().then().otherwise()
+pl.when().then().otherwise()は条件に応じて異なる値を格納したい場合に使用します。
+

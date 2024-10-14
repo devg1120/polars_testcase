@@ -1,0 +1,5 @@
+# advance
+
+欠損値の削除: pl.DataFrame.drop_nulls
+pl.DataFrame.drop_nullsで欠損値がカラムに一つでもあるレコードは削除できます。
+

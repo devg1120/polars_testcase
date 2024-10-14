@@ -1,0 +1,7 @@
+df_receipt.filter(
+    pl.col('customer_id').str.starts_with('Z').not_()
+).group_by('customer_id').agg(
+    pl.col('amount').sum()
+).select(
+    pl.col('amount').mean()
+)

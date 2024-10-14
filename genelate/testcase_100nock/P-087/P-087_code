@@ -1,0 +1,12 @@
+df_087 = df_customer.join(
+    df_receipt.group_by('customer_id').agg(
+        pl.col('amount').sum()
+    ),
+    on='customer_id', how='left'
+).sort(
+    ['amount', 'customer_id'], descending=[True, False]
+).unique(subset=['customer_name', 'postal_cd'])
+
+print('df_customer_cnt:', len(df_customer),
+      '/ df_customer_unique_cnt:', len(df_087),
+      '/ diff:', len(df_customer) - len(df_087))

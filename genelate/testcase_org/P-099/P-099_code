@@ -1,0 +1,5 @@
+df_093.write_csv(
+    '../data/P_df_product_full_UTF-8_header.tsv', 
+    has_header=True,
+    sep='\t'
+)

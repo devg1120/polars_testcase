@@ -1,0 +1,5 @@
+
+df_receipt.select([
+    "sales_ymd", "amount", pl.lit(0)
+]).head(10)
+

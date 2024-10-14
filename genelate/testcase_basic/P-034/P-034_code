@@ -1,0 +1,6 @@
+
+df_receipt.select([
+    "customer_id", "amount"
+    , pl.col("amount").rank(method='min', descending=True).alias("ranking")
+]).sort('ranking').head(10)
+

@@ -1,0 +1,5 @@
+df_product.with_columns(
+    ((pl.col('unit_cost') / 0.7).floor()).alias('new_price')
+).with_columns(
+    ((pl.col('new_price') - pl.col('unit_cost')) / pl.col('new_price')).alias('new_profit_rate')
+).head(10)

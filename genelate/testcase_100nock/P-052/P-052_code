@@ -1,0 +1,9 @@
+df_receipt.filter(
+    pl.col('customer_id').str.starts_with('Z').not_()
+).group_by('customer_id').agg(
+    pl.col('amount').sum()
+).select([
+    'customer_id',
+    'amount',
+    pl.when(pl.col('amount') > 2000).then(1).otherwise(0).alias('sales_flg')
+]).sort('customer_id').head(10)

@@ -1,0 +1,8 @@
+# advance
+
+pl.Series関連の操作
+pl.Seriesの抽出: pl.DataFrame.get_column
+前回記事ではあまりpl.Seriesは登場していませんでしたが、以下でpl.DataFrameから取り出すことが可能です。
+
+また上記でカラム名をリストで与えると、取得されるものがpl.DataFrameとなりますので、そこは注意が必要です。
+

@@ -1,0 +1,5 @@
+# basic 
+
+単純な縦方向結合: pl.concat
+DataFrame同士の縦に結合（UNIONのような処理）は、pl.concatを使用します。
+

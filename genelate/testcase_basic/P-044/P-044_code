@@ -1,0 +1,17 @@
+
+amount_sum_all = \
+    pl.col("amount").sum().alias("amount_sum_all")
+amount_sum_07 = \
+    pl.col("amount").filter(pl.col("category_major_cd") == "07").sum().alias("amount_sum_07")
+
+ans = df_receipt.join(
+    df_product
+    , how="left", on="product_cd"
+).group_by("customer_id").agg([
+    amount_sum_all
+    , amount_sum_07
+    , (amount_sum_07/amount_sum_all).alias("amount_rate_07")
+]).filter(
+    pl.col('amount_rate_07').is_not_null()
+).sort("customer_id").head(10)
+

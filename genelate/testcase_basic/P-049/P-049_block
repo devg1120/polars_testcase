@@ -1,0 +1,4 @@
+# advance
+
+ここからカラムに対応するindex番号をpl.DataFrame.find_idx_by_nameで取得して、pl.Seriesを取得できます。
+

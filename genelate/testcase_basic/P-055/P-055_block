@@ -1,0 +1,7 @@
+# advance
+
+ある単一カラムが重複しているレコードの抽出: pl.Expr.is_duplicated
+逆に特定のカラムが重複しているかどうかは、pl.DataFrame.filter内でpl.Expr.is_duplicatedを使用する必要があります。
+
+以下は誕生日が重複している"customer_name"を抽出する処理です。
+

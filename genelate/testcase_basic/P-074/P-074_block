@@ -1,0 +1,7 @@
+# advance
+
+ダミー変数化: pl.get_dummies
+pl.get_dummiesで実施可能です。
+
+まずselectでダミー変数化したいカラムを抽出した後にget_dummiesで処理します。 それらをアンパックすることで横方向に結合します。
+

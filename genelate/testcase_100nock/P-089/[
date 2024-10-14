@@ -1,0 +1,12 @@
+df_sales_customer = df_receipt.group_by('customer_id').agg(
+    pl.col('amount').sum()
+).filter(pl.col('amount') > 0)
+
+df_train, df_test = (
+    df_sales_customer
+    #.with_row_count('id')
+    .with_columns(pl.col('id').shuffle() < 0.8 * pl.all().len())
+    .partition_by(by='id')
+)
+
+ans = df_train.shape, df_test.shape, df_sales_customer.shape

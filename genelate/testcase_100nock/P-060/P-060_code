@@ -1,0 +1,12 @@
+def minmax_scale(c: str) -> pl.Expr:
+    return (pl.col(c) - pl.col(c).min()) / (pl.col(c).max() - pl.col(c).min())
+
+ans = df_receipt.filter(
+    pl.col('customer_id').str.starts_with('Z').not_()
+).group_by('customer_id').agg(
+    pl.col('amount').sum()
+).select([
+    'customer_id',
+    'amount',
+    minmax_scale('amount').alias('amount_scale')
+]).sort('customer_id').head(10)

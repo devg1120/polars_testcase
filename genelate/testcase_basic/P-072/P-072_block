@@ -1,0 +1,7 @@
+# advance
+
+その他のデータ処理
+出現回数のカウント: pl.Series.value_counts, pl.Expr.value_counts
+pl.Series.value_countsを使えば、カテゴリなどの出現回数がpl.DataFrameで得られます。
+
+

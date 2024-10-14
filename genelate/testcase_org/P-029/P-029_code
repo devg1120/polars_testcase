@@ -1,0 +1,6 @@
+df_receipt.group_by('store_cd').agg(
+    pl.col('product_cd').mode()
+).select([
+    'store_cd', 
+    'product_cd'
+]).sort('store_cd')

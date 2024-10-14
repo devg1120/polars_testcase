@@ -1,0 +1,4 @@
+df_product.join(
+    df_category.select(['category_small_cd', 'category_small_name']), 
+    how='inner', on='category_small_cd'
+).head(10)

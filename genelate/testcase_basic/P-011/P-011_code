@@ -1,0 +1,4 @@
+
+df_receipt.select(
+    pl.all()
+)

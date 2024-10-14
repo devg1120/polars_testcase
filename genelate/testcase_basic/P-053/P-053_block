@@ -1,0 +1,6 @@
+# advance
+
+ユニークな値を取り出す: pl.Series.unique
+一旦、pl.Seriesを取り出してからuniqueを実行することで、ユニークな値を得ることができます。
+
+

@@ -1,0 +1,4 @@
+df_customer.select([
+    'customer_id',
+    *pl.get_dummies(df_customer.select('gender_cd'))
+]).head(10)

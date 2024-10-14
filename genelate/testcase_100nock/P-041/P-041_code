@@ -1,0 +1,7 @@
+(df_receipt
+    .group_by('sales_ymd')
+    .agg(pl.col('amount').sum())
+    .sort('sales_ymd')
+    .with_columns((pl.col('amount') - pl.col('amount').shift()).alias('diff_amount'))
+    .head(10)
+)
